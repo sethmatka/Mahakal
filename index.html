@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>Mahakal Matka - Satta Matka Results, Kalyan Charts, Tips & Guessing 2025</title>
     <link rel="icon" href="icon.webp" type="image/png" />
@@ -100,12 +100,14 @@
 }
     .tile {
       flex: 0 0 auto;
-      background: #e0ffe0;
+      /* background: #e0ffe0; */ /* Remove green background */
       margin: 0 10px;
       padding: 10px 20px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       white-space: nowrap;
+      border: 2px solid #FFD700; /* Golden border */
+      background: #fff; /* Optional: white background for contrast */
     }
     .section-header {
       text-align: center;
@@ -128,6 +130,61 @@
 .bounce {
   animation: bounce 1s infinite;
 }
+        /* Drawer styles */
+        #rightDrawer {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 260px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+            transition: right 0.3s;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+        }
+        #rightDrawer.open {
+            right: 0;
+        }
+        #rightDrawer .drawer-header {
+            padding: 18px 20px 12px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: #3B93C3;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #rightDrawer .drawer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+        #rightDrawer .drawer-list li {
+            padding: 18px 24px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #rightDrawer .drawer-list li:hover {
+            background: #f5f5f5;
+        }
+        #drawerOverlay {
+            display: none;
+            position: fixed;
+            z-index: 9998;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.2);
+        }
+        #drawerOverlay.open {
+            display: block;
+        }
     </style>
 
     <!-- JSON-LD Structured Data for SEO -->
@@ -145,25 +202,60 @@
   }
   </script>
 </head>
-
 <body>
-    <div id="__next" data-reactroot >
-        <div class="w-full" style="overflow-y:hidden">
-            <nav class="w-full h-72 bg-pink pt-4 fixed top-0 z-50 w-full shadow backdrop-blur backdrop-filter" style="height: 80px;"
+    <div id="__next" data-reactroot style="background-color: #1A0F0D;">
+        <div class="w-full" style="overflow-y:hidden; background-color: #1A0F0D;"></div>
+            <nav style="height: 50px; background: linear-gradient(45deg, #575454, #242224);"
                 data-headlessui-state>
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full" class="w-full h-72 bg-pink pt-4" >
-                    <div style="display: flex; justify-content: left; align-items: left; height: 100%; margin-left: -15; font-family:'Times New Roman';">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full" class ="w-full h-72 bg-pink pt-4">
+                    <div style="display: flex; justify-content: space-between; align-items: center; height: 100%; margin-left: -15; font-family:'Times New Roman';">
                         <a style="cursor: default;">
-                            <h1 style="color: #feca10;">Mahakal <span style="color: #1a1a1a;">Matka</span></h1>
+                            <h1 style="color: #feca10;">🔱Mahakal <span style="color: white;">Matka</span></h1>
                             <!-- Increased image height -->
                         </a>
+                        <!-- Hamburger icon to the right -->
+                        <div id="drawerHamburger" style="cursor:pointer; margin-right:10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="32" width="32" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </nav>
+    <!-- Drawer overlay and panel -->
+    <div id="drawerOverlay"></div>
+    <div id="rightDrawer">
+        <div class="drawer-header">
+            Menu
+            <span id="closeDrawer" style="cursor:pointer;font-size:1.5rem;">&times;</span>
+        </div>
+        <ul class="drawer-list">
+            <li id="drawerHome">
+                <svg width="20" height="20" fill="none" stroke="#3B93C3" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M9 21V9h6v12"/></svg>
+                Home
+            </li>
+            <li class="drawerDownload">
+                <svg width="20" height="20" fill="none" stroke="#3B93C3" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                Download App
+            </li>
+            <li class="drawerDownload">
+                <svg width="20" height="20" fill="none" stroke="#3B93C3" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/></svg>
+                All Markets
+            </li>
+            <li class="drawerDownload">
+                <svg width="20" height="20" fill="none" stroke="#3B93C3" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/></svg>
+                Market Rates
+            </li>
+            <li class="drawerDownload">
+                <svg width="20" height="20" fill="none" stroke="#3B93C3" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/></svg>
+                All Charts Available
+            </li>
+        </ul>
+    </div>
             <div class="flex flex-col items-center min-h-screen mt-10">
                <section>
                     <div
-                        style="display: flex; justify-content: center; align-items: center; margin-top: 25px;">
+                        style="display: flex; justify-content: center; align-items: center;margin-top: -40px;">
                         <img alt="description image" style="height: 378px; width: 300px;" src="description.png">
                     </div>
                 <div style="
@@ -186,7 +278,7 @@
                         font-size: 1.4rem;
                         font-weight: 500;
                         margin: 0.25rem 0 0;
-                        color: #333;
+                        color: white;
                     ">
                         India's Trusted Online Matka App
                     </h2>
@@ -194,14 +286,14 @@
                 </section>
                 <section id="hero" class="w-full h-72 bg-pink pt-4">
                     <div class="max-w-7xl mx-auto px-4 overflow-hidden sm:px-6 lg:px-8">
-                        <div class="flex justify-center space-x-6">
+                        <div class="flex justify-center space-x-6 ">
                             <a style="text-decoration: none;" href="mahakal.apk">
-                                <img alt="description image" class="bounce" src="button.png">
+                                <img alt="description image" class="bounce" src="download.jpg" style="width:230px; height:100px; max-width:100%;">
                             </a>
                         </div>
-                        <div class="mt-8 text-center text-base">
-                            <h3 class="text-2xl text-gray-800"><strong>SUPPORT & HELP !</strong><span
-                                    class="text-grey font-16"></span></h3>
+                        <div class="mt-8 text-center text-base" style="color: white;font-family: 'Pacifico', cursive;">
+                            <h3 class="text-2xl text-white-800"><strong>SUPPORT & HELP !</strong><span
+                                    class="text-white font-16"></span></h3>
                         </div>
                         <div class="mt-1 flex justify-center space-x-6">
                             <a style="text-decoration: none;"
@@ -213,58 +305,58 @@
                     </div>
                 </section>
   <section>
-    <div class="section-header" style="color: rgb(1, 84, 166)">Amount <span style="color: rgb(146, 49, 44)">Won</span> :-</div>
+    <div class="section-header" style="color: rgb(1, 84, 166)">🏆 Amount <span style="color: rgb(146, 49, 44)">Won</span>🏆</div>
     <div class="ticker-wrapper">
     <div class="ticker">
-    <div class="tile">Pawan - Rs.5147</div>
-    <div class="tile">Suresh - Rs.7103</div>
-    <div class="tile">Abhishek - Rs.1215</div>
-    <div class="tile">Mukesh - Rs.1357</div>
-    <div class="tile">Rajesh - Rs.1500</div>
-    <div class="tile">Sam - Rs.4450</div>
-    <div class="tile">Manish - Rs.1000</div>
-    <div class="tile">Sonu - Rs.3153</div>
-    <div class="tile">Deepak - Rs.2620</div>
-    <div class="tile">Ronak - Rs.4810</div>
-    <div class="tile">Pooja - Rs.9990</div>
-    <div class="tile">Manju - Rs.7210</div>
-    <div class="tile">Manisha - Rs.1330</div>
-    <div class="tile">Keshav - Rs.4330</div>
-    <div class="tile">Ayan - Rs.8705</div>
-    <div class="tile">Jeeshan - Rs.3900</div>
-    <div class="tile">Anvesh - Rs.6000</div>
-    <div class="tile">Sara - Rs.10040</div>
-    <div class="tile">Saurabh - Rs.8712</div>
-    <div class="tile">Suraj - Rs.9800</div>
+    <div class="tile">Pawan - Rs.15147/-</div>
+    <div class="tile">Suresh - Rs.27103/-</div>
+    <div class="tile">Abhishek - Rs.21215/-</div>
+    <div class="tile">Mukesh - Rs.11357/-</div>
+    <div class="tile">Rajesh - Rs.11500/-</div>
+    <div class="tile">Sam - Rs.14450/-</div>
+    <div class="tile">Manish - Rs.21000/-</div>
+    <div class="tile">Sonu - Rs.23153/-</div>
+    <div class="tile">Deepak - Rs.12620/-</div>
+    <div class="tile">Ronak - Rs.14810/-</div>
+    <div class="tile">Pooja - Rs.9990/-</div>
+    <div class="tile">Manju - Rs.17210/-</div>
+    <div class="tile">Manisha - Rs.21330/-</div>
+    <div class="tile">Keshav - Rs.24330/-</div>
+    <div class="tile">Ayan - Rs.18705/-</div>
+    <div class="tile">Jeeshan - Rs.23900/-</div>
+    <div class="tile">Anvesh - Rs.26000/-</div>
+    <div class="tile">Sara - Rs.10040/-</div>
+    <div class="tile">Saurabh - Rs.18712/-</div>
+    <div class="tile">Suraj - Rs.19800/-</div>
         <!-- Repeat -->
-    <div class="tile">Pawan - Rs.5147</div>
-    <div class="tile">Suresh - Rs.7103</div>
-    <div class="tile">Abhishek - Rs.1215</div>
-    <div class="tile">Mukesh - Rs.1357</div>
-    <div class="tile">Rajesh - Rs.1500</div>
-    <div class="tile">Sam - Rs.4450</div>
-    <div class="tile">Manish - Rs.1000</div>
-    <div class="tile">Sonu - Rs.3153</div>
-    <div class="tile">Deepak - Rs.2620</div>
-    <div class="tile">Ronak - Rs.4810</div>
-    <div class="tile">Pooja - Rs.9990</div>
-    <div class="tile">Manju - Rs.7210</div>
-    <div class="tile">Manisha - Rs.1330</div>
-    <div class="tile">Keshav - Rs.4330</div>
-    <div class="tile">Ayan - Rs.8705</div>
-    <div class="tile">Jeeshan - Rs.3900</div>
-    <div class="tile">Anvesh - Rs.6000</div>
-    <div class="tile">Sara - Rs.10040</div>
-    <div class="tile">Saurabh - Rs.8712</div>
-    <div class="tile">Suraj - Rs.9800</div>
+    <div class="tile">Pawan - Rs.15147/-</div>
+    <div class="tile">Suresh - Rs.27103/-</div>
+    <div class="tile">Abhishek - Rs.21215/-</div>
+    <div class="tile">Mukesh - Rs.11357/-</div>
+    <div class="tile">Rajesh - Rs.11500/-</div>
+    <div class="tile">Sam - Rs.14450/-</div>
+    <div class="tile">Manish - Rs.21000/-</div>
+    <div class="tile">Sonu - Rs.23153/-</div>
+    <div class="tile">Deepak - Rs.12620/-</div>
+    <div class="tile">Ronak - Rs.14810/-</div>
+    <div class="tile">Pooja - Rs.9990/-</div>
+    <div class="tile">Manju - Rs.17210/-</div>
+    <div class="tile">Manisha - Rs.21330/-</div>
+    <div class="tile">Keshav - Rs.24330/-</div>
+    <div class="tile">Ayan - Rs.18705/-</div>
+    <div class="tile">Jeeshan - Rs.23900/-</div>
+    <div class="tile">Anvesh - Rs.26000/-</div>
+    <div class="tile">Sara - Rs.10040/-</div>
+    <div class="tile">Saurabh - Rs.18712/-</div>
+    <div class="tile">Suraj - Rs.19800/-</div>
   </div>
 </div>
 </section>
-                <section id="pricing" class="w-full h-auto pt-4 p-4 bg-gray-100">
+                <section id="pricing" class="w-full h-auto pt-4 p-4" style="margin-top: -30px;">
                     <div class="text-center my-4">
-                        <h2 class="text-4xl"><strong style="color: rgb(1, 84, 166)">Game<span class="text-orange1" style="color: rgb(146, 49, 44);">
-                                    Rates</span> </strong></h2>
-                        <p class="separator"> We have Best Game Rates for you</p>
+                        <h2 class="text-4xl"><strong style="color: rgb(1, 84, 166)">💸Game<span class="text-orange1" style="color: rgb(146, 49, 44);">
+                                    Rates💸</span> </strong></h2>
+                        <p class="separator" style="color: white;"> We have Best Game Rates for you</p>
                     </div>
 
                     <!-- Tab navigation -->
@@ -290,7 +382,7 @@
                     <!-- Main Market Content -->
                     <div class="tab-pane fade show active" id="main-market" role="tabpanel"
                         aria-labelledby="main-market-tab">
-                        <div class="row" style="background-color: white;">
+                        <div class="row" style="background-color: #1A0F0D;">
 
                             <div class="md:grid md:grid-cols-2 md:gap-2 ">
 
@@ -299,8 +391,7 @@
                                 <div class=" grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
 
-                                    <div class="text-left"><span><i class="fa fa-hand-o-right font-24 text-red"
-                                                aria-hidden="true"></i> <strong>Single Digit</strong> </span></div>
+                                    <div class="text-left"><span><strong>🛡️Single Digit</strong> </span></div>
 
                                     <div class="text-right text-orange1 pr-8">
                                         <h2 class="text-red d-inline-block" style="color: rgb(146, 49, 44);"> <strong> 10 KA
@@ -313,8 +404,7 @@
                                 <div class=" grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
 
-                                    <div class="text-left"><span><i class="fa fa-hand-o-right font-24 text-red"
-                                                aria-hidden="true"></i> <strong>Jodi Digit</strong> </span></div>
+                                    <div class="text-left"><span>  <strong>🛡️Jodi Digit</strong> </span></div>
                                     <div class="text-right text-orange1 pr-8">
                                         <h2 class="text-red d-inline-block" style="color: rgb(146, 49, 44);"> <strong> 10 KA 1000
                                             </strong></h2>
@@ -325,8 +415,7 @@
                                     style="border-color: rgb(146, 49, 44);">
 
 
-                                    <div class="text-left"><span><i class="fa fa-hand-o-right font-24 text-red"
-                                                aria-hidden="true"></i> <strong>Single Pana</strong> </span></div>
+                                    <div class="text-left"><span> <strong>🛡️Single Pana</strong> </span></div>
                                     <div class="text-right text-orange1 pr-8">
                                         <h2 class="text-red d-inline-block" style="color: rgb(146, 49, 44);"> <strong>10 KA
                                                 1600</strong></h2>
@@ -335,8 +424,7 @@
 
                                 <div class=" grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
-                                    <div class="text-left"><span><i class="fa fa-hand-o-right font-24 text-red"
-                                                aria-hidden="true"></i> <strong>Double Pana</strong> </span></div>
+                                    <div class="text-left"><span>  <strong>🛡️Double Pana</strong> </span></div>
 
                                     <div class="text-right text-orange1 pr-8">
                                         <h2 class="text-red d-inline-block" style="color: rgb(146, 49, 44);"> <strong> 10 KA 3200
@@ -348,8 +436,7 @@
 
                                 <div class=" grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
-                                    <div class="text-left"><span><i class="fa fa-hand-o-right font-24 text-red"
-                                                aria-hidden="true"></i> <strong>Triple Pana</strong> </span>
+                                    <div class="text-left"><span>  <strong>🛡️Triple Pana</strong> </span>
 
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -361,8 +448,7 @@
                                 <div class=" grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
 
-                                    <div class="text-left"><span><i class="fa fa-hand-o-right font-24 text-red"
-                                                aria-hidden="true"></i> <strong>Half Sangam Digits</strong>
+                                    <div class="text-left"><span>  <strong>🛡️Half Sangam Digits</strong>
 
                                         </span></div>
                                     <div class="text-right text-orange1 pr-8">
@@ -375,8 +461,7 @@
 
                                 <div class=" grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
-                                    <div class="text-left"><span><i class="fa fa-hand-o-right font-24 text-red"
-                                                aria-hidden="true"></i> <strong>Full Sangam Digits</strong> </span>
+                                    <div class="text-left"><span>  <strong>🛡️Full Sangam Digits</strong> </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
                                         <h2 class="text-red d-inline-block" style="color: rgb(146, 49, 44);"> <strong>10 KA
@@ -393,15 +478,14 @@
 
                     <!-- Star Line Content -->
                     <div class="tab-pane fade" id="star-line" role="tabpanel" aria-labelledby="star-line-tab">
-                        <div class="row" style="background-color: white;">
+                        <div class="row" style="background-color: #1A0F0D;">
                             <div class="md:grid md:grid-cols-2 md:gap-2">
                                 <!-- Single Digit -->
                                 <div class="grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
                                     <div class="text-left">
                                         <span>
-                                            <i class="fa fa-hand-o-right font-24 text-red" aria-hidden="true"></i>
-                                            <strong>Single Digit</strong>
+                                            <strong>🛡️Single Digit</strong>
                                         </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -416,8 +500,7 @@
                                     style="border-color: rgb(146, 49, 44);">
                                     <div class="text-left">
                                         <span>
-                                            <i class="fa fa-hand-o-right font-24 text-red" aria-hidden="true"></i>
-                                            <strong>Single Pana</strong>
+                                            <strong>🛡️Single Pana</strong>
                                         </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -432,8 +515,7 @@
                                     style="border-color: rgb(146, 49, 44);">
                                     <div class="text-left">
                                         <span>
-                                            <i class="fa fa-hand-o-right font-24 text-red" aria-hidden="true"></i>
-                                            <strong>Double Pana</strong>
+                                            <strong>🛡️Double Pana</strong>
                                         </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -448,8 +530,7 @@
                                     style="border-color: rgb(146, 49, 44);">
                                     <div class="text-left">
                                         <span>
-                                            <i class="fa fa-hand-o-right font-24 text-red" aria-hidden="true"></i>
-                                            <strong>Triple Pana</strong>
+                                            <strong>🛡️Triple Pana</strong>
                                         </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -466,15 +547,14 @@
 
                     <!-- Galidesawar Content -->
                     <div class="tab-pane fade" id="galidesawar" role="tabpanel" aria-labelledby="galidesawar-tab">
-                        <div class="row" style="background-color: white;">
+                        <div class="row" style="background-color: #1A0F0D;">
                             <div class="md:grid md:grid-cols-2 md:gap-2">
                                 <!-- Left Digit -->
                                 <div class="grid grid-cols-2 p-4 h-18 text-base md:text-lg my-2 px-2 bg-white shadow border-l-4 border-l-orange1 rounded-r-lg"
                                     style="border-color: rgb(146, 49, 44);">
                                     <div class="text-left">
                                         <span>
-                                            <i class="fa fa-hand-o-right font-24 text-red" aria-hidden="true"></i>
-                                            <strong>Left Digit</strong>
+                                            <strong>🛡️Left Digit</strong>
                                         </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -489,8 +569,7 @@
                                     style="border-color: rgb(146, 49, 44);">
                                     <div class="text-left">
                                         <span>
-                                            <i class="fa fa-hand-o-right font-24 text-red" aria-hidden="true"></i>
-                                            <strong>Right Digit</strong>
+                                            <strong>🛡️Right Digit</strong>
                                         </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -505,8 +584,7 @@
                                     style="border-color: rgb(146, 49, 44);">
                                     <div class="text-left">
                                         <span>
-                                            <i class="fa fa-hand-o-right font-24 text-red" aria-hidden="true"></i>
-                                            <strong>Jodi</strong>
+                                            <strong>🛡️Jodi</strong>
                                         </span>
                                     </div>
                                     <div class="text-right text-orange1 pr-8">
@@ -519,11 +597,11 @@
                         </div>
                     </div>
                 </section>
-                <section id="availableGames" class="w-full h-auto pt-4 p-4">
+                <section id="availableGames" class="w-full h-auto pt-4 p-4" style="margin-top: -40px;">
                     <div class="text-center my-4">
-                        <h2 class="text-4xl"><strong style="color: rgb(1, 84, 166)">Available<span class="text-orange1" style="color: rgb(146, 49, 44);">
-                                    Games</span> </strong></h2>
-                        <p class="separator"> We have multiple types of games for you </p>
+                        <h2 class="text-4xl"><strong style="color: rgb(1, 84, 166);font-size: 31px;">🎲Available<span class="text-orange1" style="color: rgb(146, 49, 44);">
+                                    Games🎲</span> </strong></h2>
+                        <p class="separator" style="color: white;"> We have multiple types of games for you </p>
                     </div>
 
                     <!-- Tab Navigation -->
@@ -547,7 +625,7 @@
                     <!-- Main Market Content -->
                     <div class="tab-pane fade show active" id="main" role="tabpanel" aria-labelledby="main-market-tab">
                         <div class="md:grid md:grid-cols-2 md:gap-4" id="available-game-row">
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>SRIDEVI MORNING </strong></h4>
@@ -562,7 +640,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>SONA SIKKA </strong></h4>
@@ -578,7 +656,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>KARNATAKA DAY</strong></h4>
@@ -596,7 +674,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MILAN MORNING </strong></h4>
@@ -614,7 +692,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>KALYAN MORNING </strong></h4>
@@ -632,7 +710,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MADHUR MORNING </strong></h4>
@@ -649,7 +727,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>SRIDEVI </strong></h4>
@@ -667,7 +745,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MADHURI</strong></h4>
@@ -685,7 +763,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>TIME BAZAR</strong></h4>
@@ -703,7 +781,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MADHUR DAY</strong></h4>
@@ -721,7 +799,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>TIME BAZAR DAY </strong></h4>
@@ -739,7 +817,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>RAJDHANI DAY</strong></h4>
@@ -756,7 +834,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MILAN DAY</strong></h4>
@@ -773,7 +851,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MAIN BAZAR DAY</strong></h4>
@@ -791,7 +869,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>SUPREME DAY</strong></h4>
@@ -807,7 +885,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>KALYAN </strong></h4>
@@ -825,7 +903,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MADHURI NIGHT</strong></h4>
@@ -842,7 +920,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>SRIDEVI NIGHT</strong></h4>
@@ -859,7 +937,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>PADMAVATI NIGHT</strong></h4>
@@ -876,7 +954,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MADHUR NIGHT</strong></h4>
@@ -894,7 +972,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>SUPREME NIGHT</strong></h4>
@@ -912,7 +990,7 @@
                                 </div>
                             </div>
 
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MILAN NIGHT</strong></h4>
@@ -929,7 +1007,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>KALYAN NIGHT</strong></h4>
@@ -946,7 +1024,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>RAJDHANI NIGHT</strong></h4>
@@ -963,7 +1041,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>OLD MAIN MUMBAI</strong></h4>
@@ -980,7 +1058,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style=" border-color: rgb(146, 49, 44);height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>MAIN BAZAR </strong></h4>
@@ -996,7 +1074,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div style=" height: 169px;"
+                            <div style="border-color: rgb(146, 49, 44); height: 169px;"
                                 class='bg-white rounded-r-lg grid grid-cols-2 pt-4 h-32 text-lg md:text-lg shadow border-l-4 border-l-orange1 my-2 px-2'>
                                 <div class='mt-4 text-center'>
                                     <h4><strong>RATAN KHATRI</strong></h4>
@@ -1100,224 +1178,197 @@
                 </section>
             </div>
             <!-- start footer -->
-<div class="w-full bg-pink pt-4" style="background-image: url(../images/brushes/footer.svg)">
-    <div class="footer-bottom" style="padding-top:90px">
+<div class="w-full bg-pink pt-4">
+    <div class="footer-bottom">
         <div class="container">
-            <div class="row chart-links" style="padding-bottom:90px">
+             <p style="color: yellow; border: 2px solid #3B93C3; border-radius: 8px; padding: 10px; background: #222; margin-bottom: 24px; text-align: center;">
+    Beware Of Fake Applications Pretending As Mahakal Matka. Dont End Up Loosing Your Money To Scammers. Play Only On 100% Orginal And Trusted Mahakal Matka Application.
+</p>
+            <div class="row chart-links" style="padding-bottom:90px; color: white;">
                 <div class="col-6 col-sm-3">
                     <h3>Jodi Charts</h3><br/>
                     <div>
-                        <a href="/radha-morning/jodi.html">RADHA MORNING</a><br/>
+                        <a style="color: red;"href="/radha-morning/jodi.html">RADHA MORNING</a><br/>
                     </div>
                     <div>
-                        <a href="/lata-morning/jodi.html">LATA MORNING</a><br/>
+                        <a style="color: red;" href="/lata-morning/jodi.html">LATA MORNING</a><br/>
                     </div>
                     <div>
-                        <a href="/sridevi/jodi.html">SRIDEVI</a><br/>
+                        <a style="color: red;" href="/sridevi/jodi.html">SRIDEVI</a><br/>
                     </div>
                     <div>
-                        <a href="/time-bazar/jodi.html">TIME BAZAR</a><br/>
+                        <a style="color: red;" href="/time-bazar/jodi.html">TIME BAZAR</a><br/>
                     </div>
                     <div>
-                        <a href="/madhur-day/jodi.html">MADHUR DAY</a><br/>
+                        <a style="color: red;" href="/madhur-day/jodi.html">MADHUR DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/rajdhani-day/jodi.html">RAJDHANI DAY</a><br/>
+                        <a style="color: red;" href="/rajdhani-day/jodi.html">RAJDHANI DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/lata-day/jodi.html">LATA DAY</a><br/>
+                        <a style="color: red;" href="/lata-day/jodi.html">LATA DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/milan-day/jodi.html">MILAN DAY</a><br/>
+                        <a style="color: red;" href="/milan-day/jodi.html">MILAN DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/radha-day/jodi.html">RADHA DAY</a><br/>
+                        <a style="color: red;" href="/radha-day/jodi.html">RADHA DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/kalyan/jodi.html">KALYAN</a><br/>
+                        <a style="color: red;" href="/kalyan/jodi.html">KALYAN</a><br/>
                     </div>
                     <div>
-                        <a href="/lata-night/jodi.html">LATA NIGHT</a><br/>
+                        <a style="color: red;" href="/lata-night/jodi.html">LATA NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/sridevi-night/jodi.html">SRIDEVI NIGHT</a><br/>
+                        <a style="color: red;" href="/sridevi-night/jodi.html">SRIDEVI NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/madhur-night/jodi.html">MADHUR NIGHT</a><br/>
+                        <a style="color: red;" href="/madhur-night/jodi.html">MADHUR NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/milan-night/jodi.html">MILAN NIGHT</a><br/>
+                        <a style="color: red;" href="/milan-night/jodi.html">MILAN NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/rajdhani-night/jodi.html">RAJDHANI NIGHT</a><br/>
+                        <a style="color: red;" href="/rajdhani-night/jodi.html">RAJDHANI NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/kalyan-night/jodi.html">KALYAN NIGHT</a><br/>
+                        <a style="color: red;" href="/kalyan-night/jodi.html">KALYAN NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/main-bazar/jodi.html">MAIN BAZAR</a><br/>
+                        <a style="color: red;" href="/main-bazar/jodi.html">MAIN BAZAR</a><br/>
                     </div>
                     <div>
-                        <a href="/radha-night/jodi.html">RADHA NIGHT</a><br/>
+                        <a style="color: red;" href="/radha-night/jodi.html">RADHA NIGHT</a><br/>
                     </div>
                 </div>
                 <div class="col-6 col-sm-3">
                     <h3>Pana Charts</h3><br/>
                     <div>
-                        <a href="/radha-morning/pana.html">RADHA MORNING</a><br/>
+                        <a style="color: red;" href="/radha-morning/pana.html">RADHA MORNING</a><br/>
                     </div>
                     <div>
-                        <a href="/lata-morning/pana.html">LATA MORNING</a><br/>
+                        <a style="color: red;" href="/lata-morning/pana.html">LATA MORNING</a><br/>
                     </div>
                     <div>
-                        <a href="/sridevi/pana.html">SRIDEVI</a><br/>
+                        <a style="color: red;" href="/sridevi/pana.html">SRIDEVI</a><br/>
                     </div>
                     <div>
-                        <a href="/time-bazar/pana.html">TIME BAZAR</a><br/>
+                        <a style="color: red;" href="/time-bazar/pana.html">TIME BAZAR</a><br/>
                     </div>
                     <div>
-                        <a href="/madhur-day/pana.html">MADHUR DAY</a><br/>
+                        <a style="color: red;" href="/madhur-day/pana.html">MADHUR DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/rajdhani-day/pana.html">RAJDHANI DAY</a><br/>
+                        <a style="color: red;" href="/rajdhani-day/pana.html">RAJDHANI DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/lata-day/pana.html">LATA DAY</a><br/>
+                        <a style="color: red;" href="/lata-day/pana.html">LATA DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/milan-day/pana.html">MILAN DAY</a><br/>
+                        <a style="color: red;" href="/milan-day/pana.html">MILAN DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/radha-day/pana.html">RADHA DAY</a><br/>
+                        <a style="color: red;" href="/radha-day/pana.html">RADHA DAY</a><br/>
                     </div>
                     <div>
-                        <a href="/kalyan/pana.html">KALYAN</a><br/>
+                        <a style="color: red;" href="/kalyan/pana.html">KALYAN</a><br/>
                     </div>
                     <div>
-                        <a href="/lata-night/pana.html">LATA NIGHT</a><br/>
+                        <a style="color: red;" href="/lata-night/pana.html">LATA NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/sridevi-night/pana.html">SRIDEVI NIGHT</a><br/>
+                        <a style="color: red;" href="/sridevi-night/pana.html">SRIDEVI NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/madhur-night/pana.html">MADHUR NIGHT</a><br/>
+                        <a style="color: red;" href="/madhur-night/pana.html">MADHUR NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/milan-night/pana.html">MILAN NIGHT</a><br/>
+                        <a style="color: red;" href="/milan-night/pana.html">MILAN NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/rajdhani-night/pana.html">RAJDHANI NIGHT</a><br/>
+                        <a style="color: red;" href="/rajdhani-night/pana.html">RAJDHANI NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/kalyan-night/pana.html">KALYAN NIGHT</a><br/>
+                        <a style="color: red;" href="/kalyan-night/pana.html">KALYAN NIGHT</a><br/>
                     </div>
                     <div>
-                        <a href="/main-bazar/pana.html">MAIN BAZAR</a><br/>
+                        <a style="color: red;" href="/main-bazar/pana.html">MAIN BAZAR</a><br/>
                     </div>
                     <div>
-                        <a href="/radha-night/pana.html">RADHA NIGHT</a><br/>
+                        <a style="color: red;" href="/radha-night/pana.html">RADHA NIGHT</a><br/>
                     </div>
                 </div>
-                <div class="col-6 col-sm-3">
-                    <h3>King Starline Charts</h3><br/>
-                    <div><a href="/all-starline-pana.html">All King Starline</a><br/></div>
-                    <div>
-                        <a href="/10:30-am/starline-pana.html">10:30 AM</a><br/>
+                <footer class="bg-footer-theme overflow-hidden">
+                    <div style="padding:1rem;display:flex;flex-direction:column;gap:1rem" class="container text-center">
+                        <div style="display:flex;gap:1rem;justify-content:center;align-items:center">
+                            <img alt="main_logo" loading="lazy" width="154" height="34" decoding="async" data-nimg="1" style="color:transparent" src="file-removebg-preview.png"/>
+                        </div>
+                        <div>
+                            <div>
+                                <p class="text-white">Players need to be 18+ in order to register. Underage gambling is prohibited.</p>
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:space-around;width:100%">
+                                <div style="position:relative;overflow:hidden;z-index:1;display:inline-flex;width:45%;height:auto;justify-content:center">
+                                    <a href="https://www.begambleaware.org">
+                                        <img alt="gamble_aware" loading="lazy" width="426" height="140" decoding="async" data-nimg="1" style="color:transparent;object-fit:contain;width:100%;position:relative;height:100%;max-width:400px" src="gambleaware.81280be1.svg"/>
+                                    </a>
+                                </div>
+                                <div style="position:relative;overflow:hidden;z-index:1;display:inline-flex;width:45%;height:auto;justify-content:center">
+                                    <a href="https://www.gamblingtherapy.org/">
+                                        <img alt="gambling_therapy" loading="lazy" width="949" height="356" decoding="async" data-nimg="1" style="color:transparent;object-fit:contain;width:100%;position:relative;height:100%;max-width:400px" src="gamblingtherapy.bc3fcef2.svg"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-white">Our website is operated by Mahakal Matka International, a company established under the law of Malta, with registered address 3 St. Patrick &#x27;s, II-Belt Valletta, Malta, and having its gaming sublicense issued by Malta e-Gaming Authority and all rights to operate the gaming software worldwide.</p>
+                            </div>
+                            <div style="width:100%;height:0.5px;background-color:#efefef;opacity:0.5"></div>
+                            <div>
+                                <p class="text-white">Copyright © 2025 - Mahakal Matka. All Rights Reserved</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <a href="/11:30-am/starline-pana.html">11:30 AM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/12:30-pm/starline-pana.html">12:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/01:30-pm/starline-pana.html">01:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/02:30-pm/starline-pana.html">02:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/03:30-pm/starline-pana.html">03:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/04:30-pm/starline-pana.html">04:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/05:30-pm/starline-pana.html">05:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/06:30-pm/starline-pana.html">06:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/07:30-pm/starline-pana.html">07:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/08:30-pm/starline-pana.html">08:30 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/09:30-pm/starline-pana.html">09:30 PM</a><br/>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-3">
-                    <h3>King Jackpot Charts</h3><br/>
-                    <div><a href="/all-jackpot-jodi.html">All King Jackpot</a><br/></div>
-                    <div>
-                        <a href="/10:00-am/jackpot-jodi.html">10:00 AM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/11:00-am/jackpot-jodi.html">11:00 AM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/12:00-pm/jackpot-jodi.html">12:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/01:00-pm/jackpot-jodi.html">01:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/02:00-pm/jackpot-jodi.html">02:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/03:00-pm/jackpot-jodi.html">03:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/04:00-pm/jackpot-jodi.html">04:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/05:00-pm/jackpot-jodi.html">05:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/06:00-pm/jackpot-jodi.html">06:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/07:00-pm/jackpot-jodi.html">07:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/08:00-pm/jackpot-jodi.html">08:00 PM</a><br/>
-                    </div>
-                    <div>
-                        <a href="/09:00-pm/jackpot-jodi.html">09:00 PM</a><br/>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="block border-top text-center content">
-                        Copyright &copy; 2022 <b>Mahakal Matka</b>. All Rights Reservederved
-                    </div>
-                    <div class="block border-top text-center content">
-                        <span href="//www.dmca.com/Protection/Status.aspx?ID=b5ca191e-e799-4b1b-8aa0-61b75b4c4aad"
-                           title="DMCA.com Protection Status" class="dmca-badge"> <img
-                                src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=b5ca191e-e799-4b1b-8aa0-61b75b4c4aad"
-                                alt="DMCA.com Protection Status"/></span>
-                        <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
-                    </div>
-                </div>
-            </div>
+                </footer>
         </div>
     </div>
 </div>
 <!-- end footer -->
         </div>
-</body>
+    <script>
+    // Drawer open/close logic
+    document.addEventListener('DOMContentLoaded', function() {
+        var drawer = document.getElementById('rightDrawer');
+        var overlay = document.getElementById('drawerOverlay');
+        var openBtn = document.getElementById('drawerHamburger');
+        var closeBtn = document.getElementById('closeDrawer');
 
+        function openDrawer() {
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+        }
+        function closeDrawer() {
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+        if (openBtn) openBtn.onclick = openDrawer;
+        if (closeBtn) closeBtn.onclick = closeDrawer;
+        if (overlay) overlay.onclick = closeDrawer;
+
+        // Drawer actions
+        var home = document.getElementById('drawerHome');
+        var downloads = document.querySelectorAll('.drawerDownload');
+        if (home) home.onclick = function() {
+            closeDrawer();
+            window.scrollTo({top:0, behavior:'smooth'});
+        };
+        downloads.forEach(function(item) {
+            item.onclick = function() {
+                closeDrawer();
+                window.location.href = 'mahakal.apk';
+            };
+        });
+    });
+    </script>
+</body>
 </html>
